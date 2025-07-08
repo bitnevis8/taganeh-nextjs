@@ -11,7 +11,8 @@ export default function MissionOrderViewPage({ params }) {
   useEffect(() => {
     const fetchMissionOrder = async () => {
       try {
-        const response = await fetch(API_ENDPOINTS.missionOrders.getById(params.id));
+        const { id } = await params;
+        const response = await fetch(API_ENDPOINTS.missionOrders.getById(id));
         if (!response.ok) {
           throw new Error('خطا در دریافت اطلاعات ماموریت');
         }
@@ -25,7 +26,7 @@ export default function MissionOrderViewPage({ params }) {
     };
 
     fetchMissionOrder();
-  }, [params.id]);
+  }, [params]);
 
   if (loading) {
     return <div className="text-center py-10">در حال بارگیری اطلاعات...</div>;

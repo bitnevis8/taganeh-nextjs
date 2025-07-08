@@ -66,4 +66,60 @@ export const API_ENDPOINTS = {
     me: `${API_BASE_URL}/user/auth/me`,
     logout: `${API_BASE_URL}/user/auth/logout`,
   },
+  // مقالات
+  articles: {
+    base: `${API_BASE_URL}/articles`,
+    getAll: `${API_BASE_URL}/articles/getAll`,
+    getById: (id) => `${API_BASE_URL}/articles/getOne/${id}`,
+    getByCategory: (categoryId, limit = 10) => `${API_BASE_URL}/articles/getByCategory/${categoryId}?limit=${limit}`,
+    getByTag: (tagId, limit = 10) => `${API_BASE_URL}/articles/getByTag/${tagId}?limit=${limit}`,
+    getByTags: (tagIds, limit = 10) => `${API_BASE_URL}/articles/getByTags?tagIds=${tagIds}&limit=${limit}`,
+    getByAgency: (agencyId, limit = 10) => `${API_BASE_URL}/articles/getByAgency/${agencyId}?limit=${limit}`,
+    search: `${API_BASE_URL}/articles/search`,
+    create: `${API_BASE_URL}/articles/create`,
+    update: (id) => `${API_BASE_URL}/articles/update/${id}`,
+    delete: (id) => `${API_BASE_URL}/articles/delete/${id}`,
+  },
+  // تگ‌ها
+  tags: {
+    base: `${API_BASE_URL}/articles/tags`,
+    getAll: `${API_BASE_URL}/articles/tags/getAll`,
+    getAllWithArticleCount: `${API_BASE_URL}/articles/tags/getAllWithArticleCount`,
+    getByClasses: `${API_BASE_URL}/articles/tags/getByClasses`,
+    testDatabase: `${API_BASE_URL}/articles/tags/testDatabase`,
+    getById: (id) => `${API_BASE_URL}/articles/tags/getOne/${id}`,
+    getByName: (name) => `${API_BASE_URL}/articles/tags/getByName/${encodeURIComponent(name)}`,
+    getByFamily: (familyId) => `${API_BASE_URL}/articles/tags/getByFamily/${familyId}`,
+    search: `${API_BASE_URL}/articles/tags/search`,
+    create: `${API_BASE_URL}/articles/tags/create`,
+    update: (id) => `${API_BASE_URL}/articles/tags/update/${id}`,
+    delete: (id) => `${API_BASE_URL}/articles/tags/delete/${id}`,
+  },
+  // دسته‌بندی‌ها
+  categories: {
+    base: `${API_BASE_URL}/articles/categories`,
+    getAll: `${API_BASE_URL}/articles/categories/getAll`,
+    getById: (id) => `${API_BASE_URL}/articles/categories/getOne/${id}`,
+    create: `${API_BASE_URL}/articles/categories/create`,
+    update: (id) => `${API_BASE_URL}/articles/categories/update/${id}`,
+    delete: (id) => `${API_BASE_URL}/articles/categories/delete/${id}`,
+  },
+  // آژانس‌ها
+  agencies: {
+    base: `${API_BASE_URL}/articles/agencies`,
+    getAll: `${API_BASE_URL}/articles/agencies/getAll`,
+    getById: (id) => `${API_BASE_URL}/articles/agencies/getOne/${id}`,
+    create: `${API_BASE_URL}/articles/agencies/create`,
+    update: (id) => `${API_BASE_URL}/articles/agencies/update/${id}`,
+    delete: (id) => `${API_BASE_URL}/articles/agencies/delete/${id}`,
+  },
+  // خانواده‌های تگ
+  tagFamilies: {
+    base: `${API_BASE_URL}/articles/tag-families`,
+    getAll: `${API_BASE_URL}/articles/tag-families/getAll`,
+    getById: (id) => `${API_BASE_URL}/articles/tag-families/getOne/${id}`,
+    create: `${API_BASE_URL}/articles/tag-families/create`,
+    update: (id) => `${API_BASE_URL}/articles/tag-families/update/${id}`,
+    delete: (id) => `${API_BASE_URL}/articles/tag-families/delete/${id}`,
+  },
 }; 

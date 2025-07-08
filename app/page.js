@@ -1,8 +1,8 @@
-"use client"
-
 import Link from 'next/link';
 import Image from 'next/image';
 import NewsCategoryBox from './components/ui/Card/NewsCategoryBox';
+import SearchSection from './components/SearchSection';
+import { API_ENDPOINTS } from './config/api';
 
 const categories = [
   { id: 1, name: 'سیاست', slug: 'politics' },
@@ -16,10 +16,9 @@ const categories = [
 
 async function fetchCategoryArticles(categoryId) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/articles/category/${categoryId}?limit=10`,
-      { cache: 'no-store' }
-    );
+    const res = await fetch(API_ENDPOINTS.articles.getByCategory(categoryId, 10), {
+      cache: 'no-store'
+    });
     const data = await res.json();
     return data?.data?.articles || [];
   } catch {
@@ -35,7 +34,11 @@ export default async function Home() {
 
   return (
     <main className="max-w-7xl mx-auto px-2 sm:px-4 py-6">
-      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">جدیدترین اخبار دسته‌بندی‌ها</h1>
+
+      
+      {/* Advanced Search Section */}
+      <SearchSection />
+      
       <div className="flex flex-col gap-8">
         {categories.map((cat, idx) => (
           <NewsCategoryBox

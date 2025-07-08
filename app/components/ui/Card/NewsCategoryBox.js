@@ -1,3 +1,5 @@
+'use client';
+
 import Card from './Card';
 import { useState } from 'react';
 
@@ -32,9 +34,7 @@ const NewsCategoryBox = ({ title, articles, categorySlug }) => {
     <Card title={title} className="mb-6">
       {/* آخرین خبر با تصویر و استایل ویژه */}
       <a
-        href={first.sourceUrl || '#'}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={`/news/${first.id}`}
         className="block bg-white hover:bg-gray-50 rounded-lg shadow p-4 mb-4 transition border border-gray-200"
       >
         <div className="flex flex-col sm:flex-row gap-4 items-center">
@@ -57,9 +57,7 @@ const NewsCategoryBox = ({ title, articles, categorySlug }) => {
         {rest.map((article) => (
           <li key={article.id}>
             <a
-              href={article.sourceUrl || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/news/${article.id}`}
               className="flex items-center justify-between py-3 px-2 hover:bg-gray-50 transition rounded"
             >
               <span className="flex-1 text-sm font-medium text-gray-800 line-clamp-1">{article.title}</span>
