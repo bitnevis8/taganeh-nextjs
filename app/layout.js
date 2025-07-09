@@ -13,8 +13,8 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata = {
-  title: "سیستم حکم ماموریت",
-  description: "سیستم مدیریت حکم ماموریت اریا فولاد",
+  title: "تگانه",
+  description: "موتور جستجوی فارسی تگانه",
 };
 
 export default function RootLayout({ children }) {

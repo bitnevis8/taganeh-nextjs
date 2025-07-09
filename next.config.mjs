@@ -40,6 +40,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'static1.parsnews.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'static2.parsnews.com',
       },
       {
@@ -49,6 +53,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.fararu.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.parsnews.com',
       },
       // دامنه‌های دیگر خبرگزاری‌ها را نیز در صورت نیاز اضافه کنید
     ],

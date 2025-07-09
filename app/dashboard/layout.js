@@ -12,7 +12,8 @@ export default function DashboardLayout({ children }) {
   const [resendLoading, setResendLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const { user, loading, setUser } = useAuth ? useAuth() : { user: null, loading: false, setUser: undefined };
+  const auth = useAuth();
+  const { user, loading, setUser } = auth || { user: null, loading: false, setUser: undefined };
 
   const handleVerifyEmail = async () => {
     setVerificationError(null);

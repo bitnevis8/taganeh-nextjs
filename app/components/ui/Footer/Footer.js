@@ -57,24 +57,24 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-blue-400 mb-4">دسته‌بندی‌های خبری</h3>
             <div className="flex flex-wrap gap-2">
-              <a href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
                 سیاسی
-              </a>
-              <a href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              </Link>
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
                 اقتصادی
-              </a>
-              <a href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              </Link>
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
                 ورزشی
-              </a>
-              <a href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              </Link>
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
                 فرهنگی
-              </a>
-              <a href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              </Link>
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
                 اجتماعی
-              </a>
-              <a href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              </Link>
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
                 فناوری
-              </a>
+              </Link>
             </div>
             <Link href="/categories" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
               مشاهده تمام دسته‌بندی‌ها →

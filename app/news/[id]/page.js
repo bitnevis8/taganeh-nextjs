@@ -81,7 +81,7 @@ export default function ExternalNewsPage() {
       <div className="min-h-screen bg-gray-50">
         <div className="text-center py-20">
           <div className="text-red-600 text-lg mb-4">خطا: {error || 'خبر یافت نشد'}</div>
-          <a href="/" className="text-blue-600 hover:underline">بازگشت به صفحه اصلی</a>
+          <Link href="/" className="text-blue-600 hover:underline">بازگشت به صفحه اصلی</Link>
         </div>
       </div>
     );
