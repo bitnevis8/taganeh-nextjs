@@ -1,8 +1,10 @@
+import Link from 'next/link';
 import { API_ENDPOINTS } from '../config/api';
 
 async function getCategories() {
   try {
     const response = await fetch(API_ENDPOINTS.categories.getAll, {
+      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     
@@ -35,10 +37,11 @@ export default async function CategoriesPage() {
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {categories.map((category) => (
-            <a
+            <Link
               key={category.id}
               href={`/categories/${category.slug}`}
-              className="group bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 overflow-hidden"
+              className="group bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 overflow-hidden block"
+              prefetch={true}
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
@@ -75,7 +78,7 @@ export default async function CategoriesPage() {
               
               {/* Hover effect indicator */}
               <div className="h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-            </a>
+            </Link>
           ))}
         </div>
 

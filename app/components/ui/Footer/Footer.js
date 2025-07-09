@@ -15,7 +15,7 @@ const Footer = () => {
             <p className="text-gray-300 text-sm leading-relaxed">
               تگانه، سریع‌ترین موتور جستجوگر خبر ایران که اخبار لحظه به لحظه را از معتبرترین خبرگزاری‌های پارسی‌زبان گردآوری می‌کند.
             </p>
-            <Link href="/about" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
+            <Link href="/about" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors" prefetch={true}>
               بیشتر بدانید →
             </Link>
             <div className="flex space-x-4 space-x-reverse">
@@ -48,7 +48,7 @@ const Footer = () => {
             <p className="text-gray-300 text-sm leading-relaxed">
               معتبرترین خبرگزاری‌های ایران و جهان که اخبار خود را در تگانه منتشر می‌کنند
             </p>
-            <Link href="/agencies" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
+            <Link href="/agencies" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors" prefetch={true}>
               مشاهده تمام منابع →
             </Link>
           </div>
@@ -57,26 +57,26 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-blue-400 mb-4">دسته‌بندی‌های خبری</h3>
             <div className="flex flex-wrap gap-2">
-              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors" prefetch={true}>
                 سیاسی
               </Link>
-              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors" prefetch={true}>
                 اقتصادی
               </Link>
-              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors" prefetch={true}>
                 ورزشی
               </Link>
-              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors" prefetch={true}>
                 فرهنگی
               </Link>
-              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors" prefetch={true}>
                 اجتماعی
               </Link>
-              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+              <Link href="/categories" className="inline-block px-3 py-1 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-blue-600 hover:text-white transition-colors" prefetch={true}>
                 فناوری
               </Link>
             </div>
-            <Link href="/categories" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
+            <Link href="/categories" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors" prefetch={true}>
               مشاهده تمام دسته‌بندی‌ها →
             </Link>
           </div>
@@ -105,7 +105,7 @@ const Footer = () => {
                 <span className="text-gray-300">تهران، ایران</span>
               </div>
             </div>
-            <Link href="/contact" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
+            <Link href="/contact" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors" prefetch={true}>
               فرم تماس →
             </Link>
           </div>

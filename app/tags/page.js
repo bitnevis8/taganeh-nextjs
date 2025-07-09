@@ -4,6 +4,7 @@ import Link from 'next/link';
 async function getTagsByClasses() {
   try {
     const response = await fetch(API_ENDPOINTS.tags.getByClasses, {
+      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     if (!response.ok) throw new Error('Failed to fetch tags by classes');
@@ -18,6 +19,7 @@ async function getTagsByClasses() {
 async function getAllTagsWithArticleCount() {
   try {
     const response = await fetch(API_ENDPOINTS.tags.getAllWithArticleCount, {
+      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     if (!response.ok) throw new Error('Failed to fetch all tags');

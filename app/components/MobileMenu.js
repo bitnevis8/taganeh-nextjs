@@ -30,6 +30,7 @@ export default function MobileMenu() {
               href="/"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
               onClick={() => setIsOpen(false)}
+              prefetch={true}
             >
               صفحه اصلی
             </Link>
@@ -37,6 +38,7 @@ export default function MobileMenu() {
               href="/categories"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
               onClick={() => setIsOpen(false)}
+              prefetch={true}
             >
               دسته‌بندی‌ها
             </Link>
@@ -44,6 +46,7 @@ export default function MobileMenu() {
               href="/tags"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
               onClick={() => setIsOpen(false)}
+              prefetch={true}
             >
               تگ‌ها
             </Link>
@@ -51,6 +54,7 @@ export default function MobileMenu() {
               href="/agencies"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
               onClick={() => setIsOpen(false)}
+              prefetch={true}
             >
               منابع خبری
             </Link>
@@ -58,6 +62,7 @@ export default function MobileMenu() {
               href="/dashboard"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors"
               onClick={() => setIsOpen(false)}
+              prefetch={true}
             >
               داشبورد
             </Link>

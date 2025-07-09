@@ -3,6 +3,7 @@ import { API_ENDPOINTS } from '../config/api';
 async function getAgencies() {
   try {
     const response = await fetch(API_ENDPOINTS.agencies.getAll, {
+      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     

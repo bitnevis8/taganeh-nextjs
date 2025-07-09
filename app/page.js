@@ -17,6 +17,7 @@ const categories = [
 async function fetchCategoryArticles(categoryId) {
   try {
     const res = await fetch(API_ENDPOINTS.articles.getByCategory(categoryId, 10), {
+      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     const data = await res.json();

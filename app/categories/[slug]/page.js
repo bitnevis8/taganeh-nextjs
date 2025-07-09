@@ -5,6 +5,7 @@ import Link from 'next/link';
 async function getCategoryBySlug(slug) {
   try {
     const response = await fetch(API_ENDPOINTS.categories.getAll, {
+      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     
@@ -26,6 +27,7 @@ async function getCategoryBySlug(slug) {
 async function getArticlesByCategory(categoryId) {
   try {
     const response = await fetch(API_ENDPOINTS.articles.getByCategory(categoryId, 20), {
+      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     
@@ -58,7 +60,7 @@ export default async function CategoryDetailPage({ params }) {
         <nav className="flex mb-8" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-3">
             <li className="inline-flex items-center">
-              <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+              <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600" prefetch={true}>
                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
                 </svg>
@@ -70,7 +72,7 @@ export default async function CategoryDetailPage({ params }) {
                 <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path>
                 </svg>
-                <Link href="/categories" className="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2">
+                <Link href="/categories" className="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2" prefetch={true}>
                   دسته‌بندی‌ها
                 </Link>
               </div>
@@ -125,6 +127,7 @@ export default async function CategoryDetailPage({ params }) {
               <Link
                 href="/categories"
                 className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                prefetch={true}
               >
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -164,9 +167,9 @@ export default async function CategoryDetailPage({ params }) {
                       </div>
                       
                       <h3 className="text-lg font-medium text-gray-900 mb-2 hover:text-blue-600 transition-colors">
-                        <a href={`/news/${article.id}`}>
+                        <Link href={`/news/${article.id}`} prefetch={true}>
                           {article.title}
-                        </a>
+                        </Link>
                       </h3>
                       
                       {article.summary && (
