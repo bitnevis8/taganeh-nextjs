@@ -1,8 +1,7 @@
 // بررسی محیط اجرا
 const isDevelopment = process.env.NODE_ENV === 'development';
 console.log('Current environment:', process.env.NODE_ENV); // برای دیباگ
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (isDevelopment ? 'http://localhost:3000' : 'https://aryafoulad-api.pourdian.com');
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (isDevelopment ? 'http://localhost:3000' : 'https://api.taganeh.ir');
 
 export const API_ENDPOINTS = {
   // تمام بخش‌های مربوط به aryafoulad حذف شود (unit-locations, mission-orders, rate-settings, warehouse-module و ...)
