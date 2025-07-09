@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { API_ENDPOINTS } from '../../../config/api';
+import Image from 'next/image';
 
 export default function SearchBox() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -245,9 +246,11 @@ export default function SearchBox() {
                       className="flex items-center gap-3 hover:bg-blue-50 rounded p-2 transition-colors"
                     >
                       {article.imageUrl && (
-                        <img
+                        <Image
                           src={article.imageUrl}
                           alt={article.title}
+                          width={48}
+                          height={48}
                           className="w-12 h-12 object-cover rounded-md border"
                         />
                       )}

@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    optimizeCss: true,
-  },
   images: {
-    domains: ['api.taganeh.ir', 'localhost'],
+    domains: ['api.taganeh.ir', 'localhost', 'taganeh.ir'],
     formats: ['image/webp', 'image/avif'],
+    unoptimized: true, // برای تصاویر خارجی
   },
   // بهینه‌سازی performance
   compress: true,

@@ -2,14 +2,17 @@
 
 import Card from './Card';
 import { useState } from 'react';
+import Image from 'next/image';
 
 function SafeImage({ src, alt, ...props }) {
   const [error, setError] = useState(false);
   if (!src || error) return <div className="w-full h-40 bg-gray-200 rounded mb-2" />;
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
+      width={400}
+      height={160}
       onError={() => setError(true)}
       className="object-cover rounded w-full h-40 mb-2"
       {...props}

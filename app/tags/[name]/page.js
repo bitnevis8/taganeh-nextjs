@@ -1,6 +1,7 @@
 import { API_ENDPOINTS } from '../../config/api';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 async function getTagByName(name) {
   try {
@@ -208,9 +209,11 @@ export default async function TagDetailPage({ params }) {
                     
                     {article.imageUrl && (
                       <div className="ml-4 flex-shrink-0">
-                        <img
+                        <Image
                           src={article.imageUrl}
                           alt={article.title}
+                          width={80}
+                          height={80}
                           className="w-20 h-20 object-cover rounded-lg"
                         />
                       </div>
