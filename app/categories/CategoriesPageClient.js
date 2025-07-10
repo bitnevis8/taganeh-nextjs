@@ -8,7 +8,23 @@ const fetcher = (url) => fetch(url).then(res => res.json());
 export default function CategoriesPageClient({ initialData }) {
   const { data, error, isLoading } = useSWR(API_ENDPOINTS.categories.getAll, fetcher, { fallbackData: initialData });
 
-  if (isLoading) return <div className="text-center py-12">در حال بارگذاری...</div>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-white rounded-lg shadow-md p-6 animate-pulse">
+                <div className="h-6 bg-gray-300 rounded w-1/2 mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-2/3 mb-2"></div>
+                <div className="h-4 bg-gray-100 rounded w-1/3"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (error) return <div className="text-center py-12 text-red-500">خطا در دریافت دسته‌بندی‌ها</div>;
 
   const categories = data?.data || [];

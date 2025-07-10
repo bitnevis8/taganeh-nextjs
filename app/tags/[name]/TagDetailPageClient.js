@@ -14,7 +14,19 @@ export default function TagDetailPageClient({ tag, initialArticles }) {
   );
   const articles = data?.data?.articles || [];
 
-  if (isLoading) return <div className="text-center py-12">در حال بارگذاری...</div>;
+  if (isLoading) {
+    return (
+      <div className="divide-y divide-gray-200">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="p-6 animate-pulse">
+            <div className="h-6 bg-gray-300 rounded w-1/2 mb-2"></div>
+            <div className="h-4 bg-gray-200 rounded w-2/3 mb-2"></div>
+            <div className="h-4 bg-gray-100 rounded w-1/3"></div>
+          </div>
+        ))}
+      </div>
+    );
+  }
   if (error) return <div className="text-center py-12 text-red-500">خطا در دریافت اخبار تگ</div>;
 
   return (
