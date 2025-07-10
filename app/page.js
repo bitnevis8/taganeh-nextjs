@@ -1,7 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import NewsCategoryBox from './components/ui/Card/NewsCategoryBox';
-import SearchSection from './components/SearchSection';
+// page.js (server component)
+import HomePageClient from './HomePageClient';
 import { API_ENDPOINTS } from './config/api';
 
 const categories = [
@@ -17,7 +15,6 @@ const categories = [
 async function fetchCategoryArticles(categoryId) {
   try {
     const res = await fetch(API_ENDPOINTS.articles.getByCategory(categoryId, 10), {
-      // کش غیرفعال شده - بعداً فعال خواهد شد
       cache: 'no-store'
     });
     const data = await res.json();
@@ -33,23 +30,5 @@ export default async function Home() {
     categories.map((cat) => fetchCategoryArticles(cat.id))
   );
 
-  return (
-    <main className="max-w-7xl mx-auto px-2 sm:px-4 py-6">
-
-      
-      {/* Advanced Search Section */}
-      <SearchSection />
-      
-      <div className="flex flex-col gap-8">
-        {categories.map((cat, idx) => (
-          <NewsCategoryBox
-            key={cat.id}
-            title={cat.name}
-            articles={articlesByCategory[idx]}
-            categorySlug={cat.slug}
-          />
-        ))}
-      </div>
-    </main>
-  );
+  return <HomePageClient initialArticlesByCategory={articlesByCategory} />;
 }

@@ -6,17 +6,24 @@ import Image from 'next/image';
 
 function SafeImage({ src, alt, ...props }) {
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   if (!src || error) return <div className="w-full h-40 bg-gray-200 rounded mb-2" />;
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={400}
-      height={160}
-      onError={() => setError(true)}
-      className="object-cover rounded w-full h-40 mb-2"
-      {...props}
-    />
+    <div className="relative w-full h-40 mb-2">
+      {loading && (
+        <div className="absolute inset-0 animate-pulse bg-gray-200 rounded z-10" />
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        width={400}
+        height={160}
+        onError={() => setError(true)}
+        onLoadingComplete={() => setLoading(false)}
+        className={`object-cover rounded w-full h-40 ${loading ? 'invisible' : ''}`}
+        {...props}
+      />
+    </div>
   );
 }
 
