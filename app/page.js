@@ -25,10 +25,9 @@ async function fetchCategoryArticles(categoryId) {
 }
 
 export default async function Home() {
-  // Fetch all categories in parallel
-  const articlesByCategory = await Promise.all(
-    categories.map((cat) => fetchCategoryArticles(cat.id))
-  );
+  // فقط دسته سیاسی را SSR کن
+  const initialArticlesByCategory = Array(categories.length).fill([]);
+  initialArticlesByCategory[0] = await fetchCategoryArticles(categories[0].id); // سیاسی
 
-  return <HomePageClient initialArticlesByCategory={articlesByCategory} />;
+  return <HomePageClient initialArticlesByCategory={initialArticlesByCategory} />;
 }

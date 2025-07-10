@@ -40,10 +40,11 @@ function timeAgo(dateString) {
 
 const fetcher = (url) => fetch(url).then(res => res.json());
 
-const NewsCategoryBox = ({ cat }) => {
+const NewsCategoryBox = ({ cat, initialArticles = [] }) => {
   const { data, error, isLoading } = useSWR(
     API_ENDPOINTS.articles.getByCategory(cat.id, 10),
-    fetcher
+    fetcher,
+    { fallbackData: { data: { articles: initialArticles } } }
   );
   const articles = data?.data?.articles || [];
 
