@@ -16,42 +16,36 @@ const categories = [
 
 const fetcher = (url) => fetch(url).then(res => res.json());
 
-function useArticlesByCategory() {
-  // Use SWR for each category
-  return categories.map((cat) => {
-    const { data, error, isLoading } = useSWR(
-      API_ENDPOINTS.articles.getByCategory(cat.id, 10),
-      fetcher
-    );
-    return {
-      articles: data?.data?.articles || [],
-      isLoading,
-      error
-    };
-  });
+function CategoryNewsSWRBox({ cat, initialArticles }) {
+  const { data, error, isLoading } = useSWR(
+    API_ENDPOINTS.articles.getByCategory(cat.id, 10),
+    fetcher,
+    { fallbackData: { data: { articles: initialArticles } } }
+  );
+  const articles = data?.data?.articles || [];
+  if (isLoading) return <div className="h-40 animate-pulse bg-gray-100 rounded mb-4" />;
+  if (error) return <div className="text-red-500">خطا در دریافت اخبار {cat.name}</div>;
+  return (
+    <NewsCategoryBox
+      title={cat.name}
+      articles={articles}
+      categorySlug={cat.slug}
+    />
+  );
 }
 
 export default function HomePageClient({ initialArticlesByCategory }) {
-  const swrArticlesByCategory = useArticlesByCategory();
-
   return (
     <main className="max-w-7xl mx-auto px-2 sm:px-4 py-6">
       <SearchSection />
       <div className="flex flex-col gap-8">
-        {categories.map((cat, idx) => {
-          const swrData = swrArticlesByCategory[idx];
-          const articles = swrData.articles.length > 0
-            ? swrData.articles
-            : (initialArticlesByCategory[idx] || []);
-          return (
-            <NewsCategoryBox
-              key={cat.id}
-              title={cat.name}
-              articles={articles}
-              categorySlug={cat.slug}
-            />
-          );
-        })}
+        {categories.map((cat, idx) => (
+          <CategoryNewsSWRBox
+            key={cat.id}
+            cat={cat}
+            initialArticles={initialArticlesByCategory[idx] || []}
+          />
+        ))}
       </div>
     </main>
   );
