@@ -34,16 +34,16 @@ function CategoryNewsSWRBox({ cat, initialArticles }) {
   );
 }
 
-export default function HomePageClient({ initialArticlesByCategory }) {
+export default function HomePageClient() {
   return (
     <main className="max-w-7xl mx-auto px-2 sm:px-4 py-6">
       <SearchSection />
       <div className="flex flex-col gap-8">
-        {categories.map((cat, idx) => (
+        {categories.map((cat) => (
           <CategoryNewsSWRBox
             key={cat.id}
             cat={cat}
-            initialArticles={initialArticlesByCategory[idx] || []}
+            initialArticles={[]}
           />
         ))}
       </div>
