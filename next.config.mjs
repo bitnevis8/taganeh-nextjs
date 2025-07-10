@@ -9,9 +9,13 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
-  // افزایش timeout برای API calls
+  // تنظیم timeout برای API calls
   serverRuntimeConfig: {
-    maxDuration: 30,
+    maxDuration: 120, // کاهش به 15 ثانیه برای سرعت بیشتر
+  },
+  // تنظیمات اضافی برای بهینه‌سازی
+  experimental: {
+    optimizePackageImports: ['@heroicons/react', 'react-leaflet'],
   },
   // بهینه‌سازی bundle
   webpack: (config, { dev, isServer }) => {

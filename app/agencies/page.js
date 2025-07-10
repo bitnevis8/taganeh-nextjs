@@ -3,15 +3,17 @@ import { API_ENDPOINTS } from '../config/api';
 async function getAgencies() {
   try {
     const response = await fetch(API_ENDPOINTS.agencies.getAll, {
-      // کش غیرفعال شده - بعداً فعال خواهد شد
-      cache: 'no-store'
+      // استفاده از force-cache برای جلوگیری از dynamic server usage error
+      cache: 'force-cache'
     });
     
     if (!response.ok) {
-      throw new Error('Failed to fetch agencies');
+      console.error('API response not ok:', response.status, response.statusText);
+      return [];
     }
     
     const data = await response.json();
+    console.log('Agencies API response:', data);
     return data.data || [];
   } catch (error) {
     console.error('Error fetching agencies:', error);

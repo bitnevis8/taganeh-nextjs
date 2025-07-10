@@ -4,11 +4,15 @@ import Link from 'next/link';
 async function getTagsByClasses() {
   try {
     const response = await fetch(API_ENDPOINTS.tags.getByClasses, {
-      // کش غیرفعال شده - بعداً فعال خواهد شد
-      cache: 'no-store'
+      // استفاده از force-cache برای جلوگیری از dynamic server usage error
+      cache: 'force-cache'
     });
-    if (!response.ok) throw new Error('Failed to fetch tags by classes');
+    if (!response.ok) {
+      console.error('API response not ok:', response.status, response.statusText);
+      return [];
+    }
     const data = await response.json();
+    console.log('Tags by classes API response:', data);
     return data.data || [];
   } catch (error) {
     console.error('Error fetching tags by classes:', error);
@@ -19,11 +23,15 @@ async function getTagsByClasses() {
 async function getAllTagsWithArticleCount() {
   try {
     const response = await fetch(API_ENDPOINTS.tags.getAllWithArticleCount, {
-      // کش غیرفعال شده - بعداً فعال خواهد شد
-      cache: 'no-store'
+      // استفاده از force-cache برای جلوگیری از dynamic server usage error
+      cache: 'force-cache'
     });
-    if (!response.ok) throw new Error('Failed to fetch all tags');
+    if (!response.ok) {
+      console.error('API response not ok:', response.status, response.statusText);
+      return { tags: [], stats: {} };
+    }
     const data = await response.json();
+    console.log('All tags with count API response:', data);
     return data.data || { tags: [], stats: {} };
   } catch (error) {
     console.error('Error fetching all tags:', error);

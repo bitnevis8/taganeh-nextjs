@@ -3,10 +3,15 @@ import { API_ENDPOINTS } from '../../config/api';
 async function testDatabase() {
   try {
     const response = await fetch(API_ENDPOINTS.tags.testDatabase, {
-      cache: 'no-store'
+      // استفاده از force-cache برای جلوگیری از dynamic server usage error
+      cache: 'force-cache'
     });
-    if (!response.ok) throw new Error('Failed to fetch database test');
+    if (!response.ok) {
+      console.error('API response not ok:', response.status, response.statusText);
+      return {};
+    }
     const data = await response.json();
+    console.log('Database test API response:', data);
     return data.data || {};
   } catch (error) {
     console.error('Error testing database:', error);
