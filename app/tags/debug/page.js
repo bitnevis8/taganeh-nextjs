@@ -1,10 +1,15 @@
 import { API_ENDPOINTS } from '../../config/api';
 
+// غیرفعال کردن کش کاملاً
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 async function testDatabase() {
   try {
     const response = await fetch(API_ENDPOINTS.tags.testDatabase, {
-      // استفاده از force-cache برای جلوگیری از dynamic server usage error
-      cache: 'force-cache'
+      // کش کاملاً غیرفعال
+      cache: 'no-store',
+      next: { revalidate: 0 }
     });
     if (!response.ok) {
       console.error('API response not ok:', response.status, response.statusText);
