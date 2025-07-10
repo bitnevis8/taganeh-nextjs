@@ -40,10 +40,9 @@ export default function HomePageClient() {
       <SearchSection />
       <div className="flex flex-col gap-8">
         {categories.map((cat) => (
-          <CategoryNewsSWRBox
+          <NewsCategoryBox
             key={cat.id}
             cat={cat}
-            initialArticles={[]}
           />
         ))}
       </div>

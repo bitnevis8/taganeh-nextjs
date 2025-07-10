@@ -1,8 +1,9 @@
 'use client';
-
+import useSWR from 'swr';
 import Card from './Card';
 import { useState } from 'react';
 import Image from 'next/image';
+import { API_ENDPOINTS } from '../../../config/api';
 
 function SafeImage({ src, alt, ...props }) {
   const [error, setError] = useState(false);
@@ -37,11 +38,32 @@ function timeAgo(dateString) {
   return `${Math.floor(diff / 86400)} روز پیش`;
 }
 
-const NewsCategoryBox = ({ title, articles, categorySlug }) => {
+const fetcher = (url) => fetch(url).then(res => res.json());
+
+const NewsCategoryBox = ({ cat }) => {
+  const { data, error, isLoading } = useSWR(
+    API_ENDPOINTS.articles.getByCategory(cat.id, 10),
+    fetcher
+  );
+  const articles = data?.data?.articles || [];
+
+  if (isLoading) {
+    return (
+      <Card title={cat.name} className="mb-6">
+        <div className="h-40 animate-pulse bg-gray-100 rounded mb-4" />
+        <div className="space-y-2">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="h-6 bg-gray-200 rounded w-3/4 mx-auto" />
+          ))}
+        </div>
+      </Card>
+    );
+  }
+  if (error) return <div className="text-red-500">خطا در دریافت اخبار {cat.name}</div>;
   if (!articles || articles.length === 0) return null;
   const [first, ...rest] = articles;
   return (
-    <Card title={title} className="mb-6">
+    <Card title={cat.name} className="mb-6">
       {/* آخرین خبر با تصویر و استایل ویژه */}
       <a
         href={`/news/${first.id}`}
