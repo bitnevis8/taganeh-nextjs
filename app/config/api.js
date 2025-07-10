@@ -1,7 +1,18 @@
 // بررسی محیط اجرا
 const isDevelopment = process.env.NODE_ENV === 'development';
 console.log('Current environment:', process.env.NODE_ENV); // برای دیباگ
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (isDevelopment ? 'http://localhost:3000' : 'https://api.taganeh.ir');
+
+// در حالت production، حتماً باید NEXT_PUBLIC_API_URL ست شده باشد. اگر نبود، به صورت پیش‌فرض روی api.taganeh.ir قرار می‌گیرد.
+let API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+if (!API_BASE_URL) {
+  if (!isDevelopment) {
+    // هشدار برای لاگ سرور
+    console.warn('⚠️ NEXT_PUBLIC_API_URL is not set! Defaulting to https://api.taganeh.ir');
+    API_BASE_URL = 'https://api.taganeh.ir';
+  } else {
+    API_BASE_URL = 'http://localhost:3000';
+  }
+}
 
 export const API_ENDPOINTS = {
   // تمام بخش‌های مربوط به aryafoulad حذف شود (unit-locations, mission-orders, rate-settings, warehouse-module و ...)
